@@ -1,0 +1,33 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100px;
+}
+
+.collection-1, .collection-2, .collection-3, .collection-4, .collection-5 {
+    height:100%;
+    width: 100%;
+    background-color: blue;
+    border: 2px solid black;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+}
+
+.collection-2 {
+    background-color: red;
+}
+
+.collection-3 {
+    background-color: green;
+}
+
+.collection-4 {
+    background-color: purple;
+}
+
+.collection-5 {
+    background-color: black;
+}
