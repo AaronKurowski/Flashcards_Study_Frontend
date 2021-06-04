@@ -1,14 +1,16 @@
 import React from 'react';
 import './collectionList.css';
 
-const CollectionList = () => {
+const CollectionList = (props) => {
 
     return(
         <div className="header">
-
-            <div className="collection-1">
-                {/* Will likely get rid of the title div and place that in a new
-                component */}
+            {props.collections.map((collection, i) =>
+                <div className={"collection-" + (i+1)}>
+                    {collection.name}
+                </div>
+            )};
+            {/* <div className="collection-1">
                 <div className="collection-1-title">
                     Collection 1
                 </div>
@@ -28,7 +30,7 @@ const CollectionList = () => {
 
             <div className="collection-5">
                 Collection 5
-            </div>
+            </div> */}
 
         </div>
     );
