@@ -8,7 +8,7 @@
 
 .collection-1, .collection-2, .collection-3, .collection-4, .collection-5 {
     height:100%;
-    width: 100%;
+    width: 20%;
     background-color: blue;
     border: 2px solid black;
     color: white;
