@@ -6,7 +6,7 @@ const CollectionList = (props) => {
     return(
         <div className="header">
             {props.collections.map((collection, i) =>
-                <div onClick={() => props.selectCollection} className={"collection-" + (i+1)}>
+                <div onClick={() => props.selectCollection(collection)} className={"collection-" + (i+1)}>
                     {collection.name}
                 </div>
             )};
