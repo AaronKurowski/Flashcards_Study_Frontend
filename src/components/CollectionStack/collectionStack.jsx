@@ -5,8 +5,19 @@ import './collectionStack.css';
 
 const CollectionStack = (props) => {
     return(
-        <div className="test">
-            Test text
+        <div className="content-container">
+            <div className="previous-btn">
+                <button>Back</button>
+            </div>
+            <div className="top-card">
+                <div className="card-text">
+                    Prompt
+                </div>
+                {/*these will render separately */}
+            </div>
+            <div className="next-btn">
+                <button>Next</button>
+            </div>
         </div>
     );
 }

@@ -1,6 +1,83 @@
-.test {
-    text-align: center;
-    height: auto;
+.content-container {
     border: 1px solid black;
-    
+    display: flex;
+    width: 75%;
+    margin: 0 auto;
+    max-width: 750px;
+    max-height: 350px;
+    min-height: 200px;
 }
+
+.top-card {
+    width: 50%;
+    border: 1px solid black;
+    text-align: center;
+    font-size: 4vw;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.card-text{
+    margin: auto;
+    white-space: wrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.previous-btn {
+    /* align-self: center; */
+    flex: 1;
+    display:flex;
+}
+
+.next-btn {
+    flex: 1;
+    align-content: center;
+    display: flex;
+}
+
+button{
+    font-size:25px;
+    flex: 1;
+    background-color:dimgray;
+    color: white;
+}
+
+
+
+/*Old code below to jog my memory*/
+/* .top-card {
+    border: 1px solid black;
+    width: 50%;
+    max-width: 750px;
+    margin: 0;
+    text-align: center;
+    height: 100%;
+    display: flex;
+}
+
+.card-text {
+    width: 95%;
+    margin: auto;
+    font-size: 50px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
+.content-container {
+    width: 100%;
+    height: 25vw;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    position: relative;
+}
+
+.previous-btn {
+    color: blue;
+    top: 30;
+    left: 0;
+} */
