@@ -2,9 +2,16 @@ import React from 'react';
 import './footer.css';
 
 const Footer = () => {
+
+    // const handleSubmit = () => {
+
+    // }
+
     return(
         <div className="footer">
-            Footer
+            <form onSubmit={event => handleSubmit}>
+                <input onChange></input>
+            </form>
         </div>
     );
 }

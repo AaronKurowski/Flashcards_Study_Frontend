@@ -29,7 +29,7 @@ const CollectionStack = (props) => {
     }
 
     const nextCard = () => {
-        setIndex(previousIndex => previousIndex + 1);
+        // setIndex(previousIndex => previousIndex + 1);
         setCurrentCard(props.allFlashcards[index].prompt);
     }
 
@@ -37,20 +37,6 @@ const CollectionStack = (props) => {
         setIndex(previousIndex => previousIndex - 1);
         setCurrentCard(props.allFlashcards[index].prompt);
     }
-
-    // const returnCorrectCard = (props) => {
-    //     if(props.allFlashcards.length === 0){
-    //         // setCurrentCard("No Cards in Stack");
-    //         currentCard = "None";
-    //         return currentCard;
-    //     }
-    //     else{
-    //         let i = 0;
-    //         // currentCard = props.allFlashcards[0].prompt;
-    //         setCurrentCard(props.allFlashcards[0].prompt);
-    //         return currentCard;
-    //     }
-    // }
 
     return(
         <React.Fragment>
@@ -66,7 +52,7 @@ const CollectionStack = (props) => {
                             </div>
                         </div>
                         <div className="next-btn">
-                            <button onClick={() => nextCard()} className="prev-next-btn">Next</button>
+                            <button onClick={() => {setIndex(previousIndex => previousIndex + 1); nextCard()}} className="prev-next-btn">Next</button>
                         </div>
                         {/*Flip button */}
                     </div>
