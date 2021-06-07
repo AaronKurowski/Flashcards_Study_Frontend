@@ -18,22 +18,24 @@ const CollectionStack = (props) => {
 
     const flipCard = () => {
         if(currentCard === props.allFlashcards[index].prompt){
+            debugger;
             setCurrentCard(props.allFlashcards[index].definition);
         }
         else{
+            debugger;
             setCurrentCard(props.allFlashcards[index].prompt);
         }
+        debugger;
     }
 
     const nextCard = () => {
-        debugger;
-        setIndex(index++);
+        setIndex(previousIndex => previousIndex + 1);
         setCurrentCard(props.allFlashcards[index].prompt);
-        debugger;
     }
 
     const previousCard = () => {
-        setIndex(index - 1);
+        setIndex(previousIndex => previousIndex - 1);
+        setCurrentCard(props.allFlashcards[index].prompt);
     }
 
     // const returnCorrectCard = (props) => {
@@ -60,9 +62,7 @@ const CollectionStack = (props) => {
                         </div>
                         <div className="top-card">
                             <div className="card-text">
-                                {/* {returnCorrectCard(props)} */}
                                 {currentCard}
-                                {/* {props.allFlashcards[0].prompt} */}
                             </div>
                         </div>
                         <div className="next-btn">
