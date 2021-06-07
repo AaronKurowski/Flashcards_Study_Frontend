@@ -22,30 +22,43 @@ class App extends Component {
         let query = "http://127.0.0.1:8000/collection/";
         let collections = await axios.get(query);
         this.setState({collectionList: collections.data});
-        console.log(this.state.collectionList);
     }
 
     getCollectionCards = async (collection) => {
         let query = `http://127.0.0.1:8000/collection/${collection.id}/flashcard/`
         let flashcards = await axios.get(query);
-        this.setState({selectedCollectionCards: flashcards});
-        debugger;
-        console.log(this.state.selectedCollectionCards.data);
+        this.setState({selectedCollectionCards: flashcards.data});
+        console.log(this.state.selectedCollectionCards);
     }
 
-    handleSelect = (collection) => {
+    handleCollectionSelect = (collection) => {
         // after clicking the flashcard div, set the content body with the contents of that collection
-        this.setState({selectedCollection: collection});
+        debugger;
+        this.setState({
+            selectedCollection: collection
+        });
+        console.log(this.state.selectedCollection);
         debugger;
         this.getCollectionCards(collection);
     }
 
+    // handleFlip = () => {
+    //     if(this.state.currentCardFace === this.state.currentFlashcard.prompt){
+    //         this.setState({currentCardFace: this.state.currentFlashcard.definition})
+    //     }
+    //     else{
+    //         this.setState({currentCardFace: this.state.currentFlashcard.prompt})
+    //     }
+    // }
+
     render(){
+        {console.log('selectedCollection', this.state.selectCollection)}
+        {console.log('selectedCollectionCards', this.state.selectedCollectionCards)}
         return(
             <div className="main-container">
-                <CollectionList selectCollection={this.handleSelect} collections={this.state.collectionList}/>
+                <CollectionList selectCollection={this.handleCollectionSelect} collections={this.state.collectionList}/>
                 <h1>Flashcards Study Tool</h1>
-                <CollectionStack currentFlashcards={this.state.selectedCollectionCards.data} />
+                <CollectionStack flip={this.handleFlip} allFlashcards={this.state.selectedCollectionCards} />
                 <Footer />
             </div>
         );
