@@ -14,27 +14,33 @@ const CollectionStack = (props) => {
             debugger;
             setCurrentCard(props.allFlashcards[index].prompt);
         }
-    }, [props.allFlashcards]);
+    }, [props.allFlashcards, index]);
 
     const flipCard = () => {
         if(currentCard === props.allFlashcards[index].prompt){
             debugger;
             setCurrentCard(props.allFlashcards[index].definition);
+            debugger;
         }
         else{
             debugger;
             setCurrentCard(props.allFlashcards[index].prompt);
+            debugger;
         }
         debugger;
     }
 
     const nextCard = () => {
-        // setIndex(previousIndex => previousIndex + 1);
-        setCurrentCard(props.allFlashcards[index].prompt);
+        if(index < props.allFlashcards.length - 1){
+            setIndex(index + 1);
+        }
+        setCurrentCard(props.allFlashcards[index].prompt);   
     }
 
     const previousCard = () => {
-        setIndex(previousIndex => previousIndex - 1);
+        if(index > 0){
+            setIndex(index - 1);
+        }
         setCurrentCard(props.allFlashcards[index].prompt);
     }
 
@@ -52,7 +58,7 @@ const CollectionStack = (props) => {
                             </div>
                         </div>
                         <div className="next-btn">
-                            <button onClick={() => {setIndex(previousIndex => previousIndex + 1); nextCard()}} className="prev-next-btn">Next</button>
+                            <button onClick={() =>  nextCard()} className="prev-next-btn">Next</button>
                         </div>
                         {/*Flip button */}
                     </div>

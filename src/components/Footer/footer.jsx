@@ -3,14 +3,10 @@ import './footer.css';
 
 const Footer = () => {
 
-    // const handleSubmit = () => {
-
-    // }
-
     return(
         <div className="footer">
-            <form onSubmit={event => handleSubmit}>
-                <input onChange></input>
+            <form onSubmit>
+                {/* <input onChange></input> */}
             </form>
         </div>
     );
