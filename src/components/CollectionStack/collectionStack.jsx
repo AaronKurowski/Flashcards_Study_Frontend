@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './collectionStack.css';
 import UpdateFlashcard from '../UpdateFlashcard/updateFlashcard.jsx';
+import CardCount from '../CardCount/cardCount.jsx';
 
 // put functions in app.jsx and pass them here. just a hook?
 
@@ -15,7 +16,7 @@ const CollectionStack = (props) => {
         if(props.allFlashcards.length > 0){
             setCurrentCard(props.allFlashcards[index].prompt);
         }
-    }, [props.allFlashcards, index]);
+    }, [props.allFlashcards, index, props.allFlashcards[index]]);
 
     const flipCard = () => {
         if(currentCard === props.allFlashcards[index].prompt){
@@ -29,6 +30,7 @@ const CollectionStack = (props) => {
     const nextCard = () => {
         if(index < props.allFlashcards.length - 1){
             setIndex(index + 1);
+            console.log(props.selectedCollection)
         }
         // setCurrentCard(props.allFlashcards[index].prompt);   
     }
@@ -57,6 +59,8 @@ const CollectionStack = (props) => {
         <React.Fragment>
             {currentCard &&
                 <React.Fragment>
+                    <h3>Viewing {props.selectedCollection.name} Collection</h3>
+                    <CardCount index={index} allFlashcards={props.allFlashcards}/>
                     <form onSubmit={(event, props) => handleSubmit(event, props)}>
                         <label for="update-prompt">Prompt</label>
                         <input type="text" name="update-prompt" id="update-prompt" value={promptUpdate} onChange={event => setPromptUpdate(event.target.value)}></input>
@@ -83,6 +87,7 @@ const CollectionStack = (props) => {
                     <div className="flip-div">
                         <button onClick={() => flipCard()} className="flip-btn">Flip!</button>
                     </div>
+                    
                 </React.Fragment>
             }
             {currentCard == null &&
