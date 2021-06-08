@@ -42,25 +42,29 @@ class App extends Component {
         alert("Flashcard successfully added!")
     }
 
-    // createNewFlashcard = async (collection, flashcard) => {
-    //     let query = `http://127.0.0.1:8000/collection/${collection.id}/flashcard/`;
-    //     let flashcard = await axios.post(query);
-    //     this.setState({...this.state.selectedCollectionCards, flashcard})
-    // }
+    updateExistingCard = (flashcard) => {
+        debugger;
+        
+        try{
+            let query = `http://127.0.0.1:8000/collection/${flashcard.collection}/flashcard/${flashcard.id}/`;
+            axios.put(query, flashcard);
+        }
+        catch(er){
+            console.log("error" + er)
+        }
 
-    // updateFlashcard = async (collection, flashcard) => {
-    //     let query = `http://127.0.0.1:8000/collection/${collection.id}/flashcard/${flashcard.id}/`;
-    //     let flashcard = await axios.put(query);
-    //     this.setState({...this.state.selectedCollectionCards, flashcard})
-    // }
+        alert("flashcard updated")
+
+        // this.setState({
+        //     selectedCollectionCards: [...this.state.selectedCollectionCards, flashcard]
+        // });
+    }
 
     handleCollectionSelect = (collection) => {
         // after clicking the flashcard div, set the content body with the contents of that collection
-        debugger;
         this.setState({
             selectedCollection: collection
         }, () => console.log(this.state.selectedCollection));
-        debugger;
         this.getCollectionCards(collection);
     }
 
@@ -71,9 +75,9 @@ class App extends Component {
             <div className="main-container">
                 <CollectionList selectCollection={this.handleCollectionSelect} collections={this.state.collectionList}/>
                 <h1>Flashcards Study Tool</h1>
-                <CollectionStack flip={this.handleFlip} allFlashcards={this.state.selectedCollectionCards} />
+                <CollectionStack updateExistingCard={this.updateExistingCard} flip={this.handleFlip} selectedCollection={this.state.selectedCollection} allFlashcards={this.state.selectedCollectionCards} updateFlashcard={this.updateFlashcard}/>
                 <CreateFlashcard allFlashcards={this.state.selectedCollectionCards} selectedCollection={this.selectedCollection} addNewFlashcard={this.addNewFlashcard}/>
-                <UpdateFlashcard allFlashcards={this.state.selectedCollectionCards} />
+                {/* <UpdateFlashcard allFlashcards={this.state.selectedCollectionCards} /> */}
                 <Footer />
             </div>
         );

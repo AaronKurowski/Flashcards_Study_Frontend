@@ -24,19 +24,16 @@ class CreateFlashcard extends Component {
             definition: this.state.definition,
             collection: this.props.allFlashcards[0].collection
         };
-        debugger;
+
         this.props.addNewFlashcard(flashcard);
 
-        debugger;
         try{
             axios.post(`http://127.0.0.1:8000/collection/${this.props.allFlashcards[0].collection}/flashcard/`, flashcard);
-            debugger;
         }
         catch(er){
-            debugger;
             console.log(er);
         }
-        debugger;
+        
         this.setState({
             prompt: '', 
             definition: ''
