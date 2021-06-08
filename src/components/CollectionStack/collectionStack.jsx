@@ -10,23 +10,17 @@ const CollectionStack = (props) => {
 
     useEffect(() => {
         if(props.allFlashcards.length > 0){
-            debugger;
             setCurrentCard(props.allFlashcards[index].prompt);
         }
     }, [props.allFlashcards, index]);
 
     const flipCard = () => {
         if(currentCard === props.allFlashcards[index].prompt){
-            debugger;
             setCurrentCard(props.allFlashcards[index].definition);
-            debugger;
         }
         else{
-            debugger;
             setCurrentCard(props.allFlashcards[index].prompt);
-            debugger;
         }
-        debugger;
     }
 
     const nextCard = () => {

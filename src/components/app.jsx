@@ -5,6 +5,7 @@ import axios from 'axios';
 import CollectionStack from './CollectionStack/collectionStack.jsx';
 import Footer from './Footer/footer.jsx';
 import CreateFlashcard from './FlashcardCreator/flashcardCreator.jsx';
+import UpdateFlashcard from './UpdateFlashcard/updateFlashcard.jsx';
 
 
 class App extends Component {
@@ -72,6 +73,7 @@ class App extends Component {
                 <h1>Flashcards Study Tool</h1>
                 <CollectionStack flip={this.handleFlip} allFlashcards={this.state.selectedCollectionCards} />
                 <CreateFlashcard allFlashcards={this.state.selectedCollectionCards} selectedCollection={this.selectedCollection} addNewFlashcard={this.addNewFlashcard}/>
+                <UpdateFlashcard allFlashcards={this.state.selectedCollectionCards} />
                 <Footer />
             </div>
         );
