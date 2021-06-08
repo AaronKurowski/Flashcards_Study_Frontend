@@ -29,7 +29,7 @@ class App extends Component {
         let query = `http://127.0.0.1:8000/collection/${collection.id}/flashcard/`;
         let flashcards = await axios.get(query);
         //might be easy to implement a reclick of collections
-        
+
         this.setState({selectedCollectionCards: flashcards.data});
         console.log(this.state.selectedCollectionCards);
     }
@@ -58,7 +58,7 @@ class App extends Component {
         debugger;
         this.setState({
             selectedCollection: collection
-        });
+        }, () => console.log(this.state.selectedCollection));
         debugger;
         this.getCollectionCards(collection);
     }
@@ -71,7 +71,7 @@ class App extends Component {
                 <CollectionList selectCollection={this.handleCollectionSelect} collections={this.state.collectionList}/>
                 <h1>Flashcards Study Tool</h1>
                 <CollectionStack flip={this.handleFlip} allFlashcards={this.state.selectedCollectionCards} />
-                <CreateFlashcard selectedCollection={this.selectedCollection} addNewFlashcard={this.addNewFlashcard}/>
+                <CreateFlashcard allFlashcards={this.state.selectedCollectionCards} selectedCollection={this.selectedCollection} addNewFlashcard={this.addNewFlashcard}/>
                 <Footer />
             </div>
         );

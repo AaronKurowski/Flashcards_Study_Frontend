@@ -5,7 +5,6 @@ import './collectionStack.css';
 
 const CollectionStack = (props) => {
 
-    // might need this idk
     const [currentCard, setCurrentCard] = useState(null);
     const [index, setIndex] = useState(0);
 

@@ -2,13 +2,13 @@ import React, {Component} from 'react';
 import axios from 'axios';
 
 class CreateFlashcard extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             prompt: '',
             definition: ''
-        };
-    };
+        }
+    }
 
     handleChange(event) {
         this.setState({
@@ -16,19 +16,27 @@ class CreateFlashcard extends Component {
         });
     };
 
-    handleSubmit(event, props){
+    handleSubmit(event){
         event.preventDefault();
 
         const flashcard = {
             prompt: this.state.prompt,
-            definition: this.state.definition
+            definition: this.state.definition,
+            collection: this.props.allFlashcards[0].collection
         };
+        debugger;
+        this.props.addNewFlashcard(flashcard);
 
-        props.addNewFlashcard(flashcard);
-
-        let query = axios.post(`http://127.0.0.1:8000/collection/${props.selectedCollection.id}/flashcard/`);
-        console.log(query);
-
+        debugger;
+        try{
+            axios.post(`http://127.0.0.1:8000/collection/${this.props.allFlashcards[0].collection}/flashcard/`, flashcard);
+            debugger;
+        }
+        catch(er){
+            debugger;
+            console.log(er);
+        }
+        debugger;
         this.setState({
             prompt: '', 
             definition: ''
@@ -37,14 +45,14 @@ class CreateFlashcard extends Component {
 
     render(){
         return(
-            <form onSubmit={() => this.handleSubmit()}>
+            <form onSubmit={(event) => this.handleSubmit(event)}>
                 <label for="prompt">Prompt</label>
-                <input type="text" name="prompt" id="prompt" value={this.state.prompt}/>
+                <input type="text" name="prompt" id="prompt" value={this.state.prompt} onChange={(event) => this.handleChange(event)}></input>
 
                 <label for="definition">Definition</label>
-                <input type="text" name="definition" id="definition" value={this.state.definition}/>
+                <input type="text" name="definition" id="definition" value={this.state.definition} onChange={(event) => this.handleChange(event)}></input>
 
-                <button type="submit">Create Card</button>
+                <button type="submit" value="Create">Create Card</button>
             </form>
         );
     }
