@@ -2,11 +2,10 @@ import React from 'react';
 import './cardCount.css';
 
 const CardCount = (props) => {
-    debugger;
     return(
-        // returns the count of the card in a div or something
+        // returns the count of the card in a div
         <div className="counter">
-            Card {props.index + 1} of {props.allFlashcards.length}
+            Card <strong>{props.index + 1}</strong> of <strong>{props.allFlashcards.length}</strong>
         </div>
     );
 }
