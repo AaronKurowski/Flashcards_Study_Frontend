@@ -16,7 +16,7 @@ const CollectionStack = (props) => {
         if(props.allFlashcards.length > 0){
             setCurrentCard(props.allFlashcards[index].prompt);
         }
-    }, [props.allFlashcards, index, props.allFlashcards[index]]);
+    }, [props.allFlashcards, index]);
 
     const flipCard = () => {
         if(currentCard === props.allFlashcards[index].prompt){
@@ -30,29 +30,28 @@ const CollectionStack = (props) => {
     const nextCard = () => {
         if(index < props.allFlashcards.length - 1){
             setIndex(index + 1);
-            console.log(props.selectedCollection)
+            debugger;
         }
-        // setCurrentCard(props.allFlashcards[index].prompt);   
     }
 
     const previousCard = () => {
         if(index > 0){
             setIndex(index - 1);
         }
-        // setCurrentCard(props.allFlashcards[index].prompt);
     }
 
     const handleSubmit = (event) => {
+        // submit for update form
         event.preventDefault();
         debugger;
-
         const flashcard = {
             id: props.allFlashcards[index].id,
             prompt: promptUpdate,
             definition: definitionUpdate,
             collection: props.allFlashcards[index].collection
         }
-        props.updateExistingCard(flashcard);
+        debugger;
+        props.updateExistingCard(flashcard, index);
     }
 
     return(
@@ -70,7 +69,6 @@ const CollectionStack = (props) => {
                     
                         <button type="submit">Update Card</button>
                     </form>
-                    {/* <UpdateFlashcard updateExistingCard={props.updateExistingCard} selectedCollectionCards={props.currentCollectionCards} currentCollection={props.currentCollection} currentCard={currentCard} index={index}/> */}
                     <div className="content-container">
                         <div className="previous-btn">
                             <button onClick={() => previousCard()} className="prev-next-btn">Back</button>

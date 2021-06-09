@@ -19,6 +19,10 @@ class App extends Component {
         }
     }
 
+    componentDidUpdate = () => {
+
+    }
+
     getCollections = async () => {
         let query = "http://127.0.0.1:8000/collection/";
         let collections = await axios.get(query);
@@ -41,33 +45,36 @@ class App extends Component {
         alert("Flashcard successfully added!")
     }
 
-    updateExistingCard = (flashcard) => {
+    updateExistingCard = (flashcard, index) => {
         try{
             let query = `http://127.0.0.1:8000/collection/${flashcard.collection}/flashcard/${flashcard.id}/`;
             axios.put(query, flashcard);
         }
         catch(er){
-            console.log("error" + er)
+            console.log("error")
+            alert("Something went wrong when trying to update this flashcard")
         }
 
         alert("flashcard updated")
 
-        // this.setState({
-        //     selectedCollectionCards: [...this.state.selectedCollectionCards, flashcard]
-        // });
+        debugger;
+        const allCards = [...this.state.selectedCollectionCards];
+        debugger;
+        allCards[index] = flashcard;
+        debugger;
+        this.setState({selectedCollectionCards: allCards});
+        debugger;
     }
 
     handleCollectionSelect = async (collection) => {
         // after clicking the flashcard div, set the content body with the contents of that collection
-        debugger;
-            let query = `http://127.0.0.1:8000/collection/${collection.id}/`;
-            let collectionById = await axios.get(query);
+        let query = `http://127.0.0.1:8000/collection/${collection.id}/`;
+        let collectionById = await axios.get(query);
 
         this.setState({
             selectedCollection: collectionById.data
         }, () => console.log(this.state.selectedCollection));
 
-        debugger;
         this.getCollectionCards(collection);
     }
 
