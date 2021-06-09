@@ -88,8 +88,9 @@ const CollectionStack = (props) => {
                     
                 </React.Fragment>
             }
+
             {/* {currentCard == null &&
-                <h1>No Cards</h1>
+                <h1>No Collection Selected</h1>
             } */}
         </React.Fragment>
     );

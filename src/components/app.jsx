@@ -11,7 +11,9 @@ import CollectionCreator from './CollectionCreator/collectionCreator.jsx';
 class App extends Component {
     constructor(props){
         super(props);
+        debugger;
         this.getCollections();
+        debugger;
 
         this.state = {
             selectedCollection: {},
@@ -63,7 +65,7 @@ class App extends Component {
         // after clicking the flashcard div, set the content body with the contents of that collection
         let query = `http://127.0.0.1:8000/collection/${collection.id}/`;
         let collectionById = await axios.get(query);
-
+        debugger;
         this.setState({
             selectedCollection: collectionById.data
         }, () => console.log(this.state.selectedCollection));
@@ -87,10 +89,10 @@ class App extends Component {
         {console.log('selectedCollectionCards', this.state.selectedCollectionCards)}
         return(
             <div className="main-container">
-                <CollectionList selectCollection={this.handleCollectionSelect} collections={this.state.collectionList}/>
+                <CollectionList selectCollection={this.handleCollectionSelect} collectionList={this.state.collectionList}/>
                 <h1>Flashcards Study Tool</h1>
                 {/* collection creator goes here */}
-                <CollectionCreator addCollection={this.addCollection}/>
+                <CollectionCreator addCollection={this.addCollection} selectedCollection={this.state.selectedCollection}/>
                 <CollectionStack updateExistingCard={this.updateExistingCard} flip={this.handleFlip} selectedCollection={this.state.selectedCollection} allFlashcards={this.state.selectedCollectionCards} updateFlashcard={this.updateFlashcard}/>
                 <CreateFlashcard allFlashcards={this.state.selectedCollectionCards} selectedCollection={this.state.selectedCollection} addNewFlashcard={this.addNewFlashcard}/>
                 {/* <Footer /> */}

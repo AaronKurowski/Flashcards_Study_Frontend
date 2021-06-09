@@ -35,3 +35,10 @@
 .collection-5 {
     background-color: black;
 }
+
+p {
+    text-align: center;
+    border: 1px dotted black;
+    width: 40%;
+    margin: 0 auto;
+}

@@ -28,7 +28,7 @@ class CreateFlashcard extends Component {
         this.props.addNewFlashcard(flashcard);
 
         try{
-            axios.post(`http://127.0.0.1:8000/collection/${this.props.allFlashcards[0].collection}/flashcard/`, flashcard);
+            axios.post(`http://127.0.0.1:8000/collection/${this.props.selectedCollection.id}/flashcard/`, flashcard);
         }
         catch(er){
             console.log(er);
@@ -43,7 +43,6 @@ class CreateFlashcard extends Component {
     render(){
         return(
             <React.Fragment>
-                {this.props.selectedCollection !== null &&
                 <form onSubmit={(event) => this.handleSubmit(event)}>
                     <label for="prompt">Prompt</label>
                     <input type="text" name="prompt" id="prompt" value={this.state.prompt} onChange={(event) => this.handleChange(event)}></input>
@@ -53,8 +52,6 @@ class CreateFlashcard extends Component {
 
                     <button type="submit" value="Create">Create Card</button>
                 </form>
-                }
-                {/* {this.props.allFlashcards.length == 0} */}
             </React.Fragment>
         );
     }
