@@ -18,13 +18,13 @@ class CreateFlashcard extends Component {
 
     handleSubmit(event){
         event.preventDefault();
-
+        debugger;
         const flashcard = {
             prompt: this.state.prompt,
             definition: this.state.definition,
-            collection: this.props.allFlashcards[0].collection
+            collection: this.props.selectedCollection.id
         };
-
+        debugger;
         this.props.addNewFlashcard(flashcard);
 
         try{
@@ -43,7 +43,7 @@ class CreateFlashcard extends Component {
     render(){
         return(
             <React.Fragment>
-                {this.props.allFlashcards.length > 0 &&
+                {this.props.selectedCollection !== null &&
                 <form onSubmit={(event) => this.handleSubmit(event)}>
                     <label for="prompt">Prompt</label>
                     <input type="text" name="prompt" id="prompt" value={this.state.prompt} onChange={(event) => this.handleChange(event)}></input>

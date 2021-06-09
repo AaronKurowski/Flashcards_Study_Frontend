@@ -56,7 +56,7 @@ const CollectionStack = (props) => {
 
     return(
         <React.Fragment>
-            {currentCard &&
+            {props.selectedCollection &&
                 <React.Fragment>
                     <h3>Viewing {props.selectedCollection.name} Collection</h3>
                     <CardCount index={index} allFlashcards={props.allFlashcards}/>
@@ -88,9 +88,9 @@ const CollectionStack = (props) => {
                     
                 </React.Fragment>
             }
-            {currentCard == null &&
+            {/* {currentCard == null &&
                 <h1>No Cards</h1>
-            }
+            } */}
         </React.Fragment>
     );
 }
