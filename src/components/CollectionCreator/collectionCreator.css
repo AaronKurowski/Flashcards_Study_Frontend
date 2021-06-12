@@ -1,0 +1,28 @@
+.collection-div{
+    /* border: 2px dotted seagreen; */
+    padding: 10px;
+    width: 50%;
+    margin: 10px auto;
+}
+
+.collection-form{
+    width: 100%;
+    text-align: center;
+}
+
+.collection-form > button{
+    background-color: dimgray;
+    color: white;
+    width: 20%;
+}
+
+.collection-form > label {
+    font-size: 17px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight:bold;
+}
+
+.collection-form > input {
+    width: 33%;
+    min-width: 100px;
+}

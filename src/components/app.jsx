@@ -18,7 +18,7 @@ class App extends Component {
         this.state = {
             selectedCollection: {},
             selectedCollectionCards: [],
-            collectionList: [],
+            collectionList: []
         }
     }
 
@@ -80,13 +80,13 @@ class App extends Component {
         // set the state
         const newCollectionList = [...this.state.collectionList, collection];
         
-        this.setState({collectionList: newCollectionList})
+        this.setState({collectionList: newCollectionList, selectedCollection: collection});
         console.log('made it here');
     }
     
     render(){
         {console.log('selectedCollection', this.state.selectedCollection)}
-        {console.log('selectedCollectionCards', this.state.selectedCollectionCards)}
+        // {console.log('selectedCollectionCards', this.state.selectedCollectionCards)}
         return(
             <div className="main-container">
                 <CollectionList selectCollection={this.handleCollectionSelect} collectionList={this.state.collectionList}/>
@@ -94,8 +94,10 @@ class App extends Component {
                 {/* collection creator goes here */}
                 <CollectionCreator addCollection={this.addCollection} selectedCollection={this.state.selectedCollection}/>
                 <CollectionStack updateExistingCard={this.updateExistingCard} flip={this.handleFlip} selectedCollection={this.state.selectedCollection} allFlashcards={this.state.selectedCollectionCards} updateFlashcard={this.updateFlashcard}/>
+                
+                {Object.keys(this.state.selectedCollection).length > 0 &&
                 <CreateFlashcard allFlashcards={this.state.selectedCollectionCards} selectedCollection={this.state.selectedCollection} addNewFlashcard={this.addNewFlashcard}/>
-                {/* <Footer /> */}
+                }
             </div>
         );
     }

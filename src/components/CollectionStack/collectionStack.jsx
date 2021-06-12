@@ -54,11 +54,16 @@ const CollectionStack = (props) => {
         props.updateExistingCard(flashcard, index);
     }
 
+    if(Object.keys(props.selectedCollection).length > 0 && props.allFlashcards.length == 0){
+        return(<h3>Viewing {props.selectedCollection.name} Collection</h3>);
+    }
+    else{
+
     return(
         <React.Fragment>
-            {props.selectedCollection &&
-                <React.Fragment>
-                    <h3>Viewing {props.selectedCollection.name} Collection</h3>
+            {props.allFlashcards.length > 0 &&
+                <React.Fragment> 
+                    <h3>Viewing {props.selectedCollection.name} Collection</h3>             
                     <CardCount index={index} allFlashcards={props.allFlashcards}/>
                     <form onSubmit={(event, props) => handleSubmit(event, props)}>
                         <label for="update-prompt">Prompt</label>
@@ -94,6 +99,7 @@ const CollectionStack = (props) => {
             } */}
         </React.Fragment>
     );
+   }
 }
 
 export default CollectionStack;

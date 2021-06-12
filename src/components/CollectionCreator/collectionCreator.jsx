@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import './collectionCreator.css';
 
 
 const CollectionCreator = (props) => {
@@ -23,13 +24,15 @@ const CollectionCreator = (props) => {
 
     
     return(
-        <form onSubmit={(event) => handleCollectionSubmit(event)}>
+        <div className="collection-div"> 
+                <form className="collection-form" onSubmit={(event) => handleCollectionSubmit(event)}>
 
-            <label for="name"></label>
-            <input type="text" name="name" id="name" value={name} onChange={(event) => handleChange(event)}></input>
+                    <label for="name">Collection Name: </label>
+                    <input type="text" name="name" id="name" value={name} onChange={(event) => handleChange(event)}></input>
 
-            <button type="submit">Create Collection</button>
-        </form>
+                    <button type="submit">Create Collection</button>
+                </form>
+        </div>
     );
 }
 

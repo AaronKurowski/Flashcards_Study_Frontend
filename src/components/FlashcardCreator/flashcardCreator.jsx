@@ -18,13 +18,11 @@ class CreateFlashcard extends Component {
 
     handleSubmit(event){
         event.preventDefault();
-        debugger;
         const flashcard = {
             prompt: this.state.prompt,
             definition: this.state.definition,
             collection: this.props.selectedCollection.id
         };
-        debugger;
         this.props.addNewFlashcard(flashcard);
 
         try{
