@@ -3,7 +3,6 @@ import CollectionList from './CollectionList/collectionList.jsx';
 import './app.css';
 import axios from 'axios';
 import CollectionStack from './CollectionStack/collectionStack.jsx';
-import Footer from './Footer/footer.jsx';
 import CreateFlashcard from './FlashcardCreator/flashcardCreator.jsx';
 import CollectionCreator from './CollectionCreator/collectionCreator.jsx';
 
@@ -92,12 +91,15 @@ class App extends Component {
                 <CollectionList selectCollection={this.handleCollectionSelect} collectionList={this.state.collectionList}/>
                 <h1>Flashcards Study Tool</h1>
                 {/* collection creator goes here */}
+                {this.state.collectionList.length < 5 &&
                 <CollectionCreator addCollection={this.addCollection} selectedCollection={this.state.selectedCollection}/>
-                <CollectionStack updateExistingCard={this.updateExistingCard} flip={this.handleFlip} selectedCollection={this.state.selectedCollection} allFlashcards={this.state.selectedCollectionCards} updateFlashcard={this.updateFlashcard}/>
-                
+                }
                 {Object.keys(this.state.selectedCollection).length > 0 &&
                 <CreateFlashcard allFlashcards={this.state.selectedCollectionCards} selectedCollection={this.state.selectedCollection} addNewFlashcard={this.addNewFlashcard}/>
                 }
+                <CollectionStack updateExistingCard={this.updateExistingCard} flip={this.handleFlip} selectedCollection={this.state.selectedCollection} allFlashcards={this.state.selectedCollectionCards} updateFlashcard={this.updateFlashcard}/>
+                
+                
             </div>
         );
     }

@@ -27,10 +27,10 @@ const CollectionCreator = (props) => {
         <div className="collection-div"> 
                 <form className="collection-form" onSubmit={(event) => handleCollectionSubmit(event)}>
 
-                    <label for="name">Collection Name: </label>
+                    <label for="name">New Collection: </label>
                     <input type="text" name="name" id="name" value={name} onChange={(event) => handleChange(event)}></input>
 
-                    <button type="submit">Create Collection</button>
+                    <button type="submit">Create</button>
                 </form>
         </div>
     );

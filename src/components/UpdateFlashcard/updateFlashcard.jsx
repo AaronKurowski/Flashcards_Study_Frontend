@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {Button, Modal} from 'react-bootstrap';
+
 
 class UpdateFlashcard extends Component{
     constructor(props){
@@ -42,6 +44,8 @@ class UpdateFlashcard extends Component{
 
     render(){
         return(
+            
+
             <form onsubmit={(event) => this.handleSubmit(event)}>
                 <label for="update-prompt">Prompt</label>
                 <input type="text" name="update-prompt" id="update-prompt" value={this.state.prompt} onChange={(event) => this.handleChange(event)}></input>
@@ -51,6 +55,9 @@ class UpdateFlashcard extends Component{
             
                 <button type="submit">Update Card</button>
             </form>
+
+
+
         );
     }
 }

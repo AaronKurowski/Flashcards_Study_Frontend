@@ -30,7 +30,6 @@ const CollectionStack = (props) => {
     const nextCard = () => {
         if(index < props.allFlashcards.length - 1){
             setIndex(index + 1);
-            debugger;
         }
     }
 
@@ -89,14 +88,9 @@ const CollectionStack = (props) => {
                     </div>
                     <div className="flip-div">
                         <button onClick={() => flipCard()} className="flip-btn">Flip!</button>
-                    </div>
-                    
+                    </div>                
                 </React.Fragment>
             }
-
-            {/* {currentCard == null &&
-                <h1>No Collection Selected</h1>
-            } */}
         </React.Fragment>
     );
    }
